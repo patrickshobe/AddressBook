@@ -8,7 +8,7 @@ class BasicTestCase(unittest.TestCase):
         test = app.test_client(self)
         response = test.get('/', content_type='html/text')
         self.assertEqual(response.status_code, 200)
-        self.assertEqual(response.data, b'This is the index')
+        self.assertEqual(response.data, b'TRELORA')
 
 
 if __name__ == '__main__':
