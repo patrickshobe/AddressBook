@@ -18,6 +18,7 @@
     <td>{{ address.city }}</td>
     <td>{{ address.state }}</td>
     <td>{{ address.zip }}</td>
+    <td><a href="{{ url_for('delete', id=address.id)}}">Delete</a></td>
   </tr>
 
     {% endfor %}

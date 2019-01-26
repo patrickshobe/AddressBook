@@ -21,3 +21,11 @@ def create():
         flash('{} Created Successfully'.format(form.name.data))
         return redirect('/')
     return render_template('create.html', form=form)
+
+@app.route('/address/delete/<int:id>')
+def delete(id):
+    Address.query.filter_by(id=id).delete()
+    db.session.commit()
+    flash('Entry Successfully Deleted')
+    return redirect('/')
+
