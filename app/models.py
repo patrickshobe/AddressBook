@@ -9,5 +9,5 @@ class Address(db.Model):
     zip = db.Column(db.Integer)
 
     def __repr__(self):
-        return '<Address {}>', format(self.address)
+        return '<Address {}>'.format(self.name)
 
