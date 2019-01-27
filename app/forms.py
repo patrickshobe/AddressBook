@@ -7,7 +7,7 @@ class AddressForm(FlaskForm):
     address = StringField('address', validators=[DataRequired()])
     city = StringField('city', validators=[DataRequired()])
     state = StringField('state', validators=[DataRequired()])
-    zip = IntegerField('zip', validators=[DataRequired()])
+    zip = StringField('zip', validators=[DataRequired()])
     submit = SubmitField('Submit')
 
 

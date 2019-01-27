@@ -6,7 +6,8 @@ class Address(db.Model):
     address = db.Column(db.String(250))
     city = db.Column(db.String(120))
     state = db.Column(db.String(20))
-    zip = db.Column(db.Integer)
+    zip = db.Column(db.String(5))
+    error = db.Column(db.String(250))
 
     def __repr__(self):
         return '<Address {}>'.format(self.name)
