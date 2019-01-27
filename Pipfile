@@ -10,6 +10,9 @@ flask = "*"
 flask-wtf = "*"
 flask-sqlalchemy = "*"
 flask-migrate = "*"
+requests = "*"
+psycopg2 = "*"
+gunicorn = "*"
 
 [requires]
 python_version = "3.7"
