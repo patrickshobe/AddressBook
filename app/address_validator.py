@@ -43,11 +43,11 @@ class AddressValidator:
         elif (result['City'] != self.address['city'].lower()
               and result['State'] != self.address['state'].lower()):
             return 'Incorrect City & State: Did you mean {}, {}?'.format(
-                self.address['city'],
-                self.address['state'])
+                result['City'].capitalize(),
+                result['State'].upper())
         elif result['City'] != self.address['city'].lower():
             return 'Incorrect City: Did you mean {}?'.format(
-                result['City'])
+                result['City'].capitalize())
         elif result['State'] != self.address['state'].lower():
             return 'Incorrect State: Did you mean {}?'.format(
                 result['State'].upper())

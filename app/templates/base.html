@@ -4,9 +4,22 @@
 <html>
     <head>
       <title>Address Book</title>
+    <link ... rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='stylesheets/main.css') }}">
+      <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
     </head>
     <body>
-        <hr>
+      <div class='nav'>
+        <div>
+          <h1 class='title title-left'>Address</h1>
+          <h1 class='title title-right'>Book</h1>
+        </div>
+        <div class='create-button-container'>
+         <a href="/"> <button type="button" href="/" class='create-button'>Home</button></a>
+          <a href="{{ url_for('create')}}"><button type="button"  class='create-button'>Add Address</button></a>
+        </div>
+      </div>
+      <div class='main-section'>
         {% block content %}{% endblock %}
+      </div>
     </body>
 </html>
