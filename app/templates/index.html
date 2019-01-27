@@ -18,6 +18,9 @@
     <td>{{ address.city }}</td>
     <td>{{ address.state }}</td>
     <td>{{ address.zip }}</td>
+    {% if address.error != None %}
+    <td>{{ address.error }}</td>
+    {% endif %}
     <td><a href="{{ url_for('delete', id=address.id)}}">Delete</a></td>
   </tr>
 
