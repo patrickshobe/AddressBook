@@ -6,7 +6,7 @@ import unittest
 
 from app import app, db
 from app.models import Address
-from app.address_validator import AddressValidator
+from app.address_validator import ZipService
 
 
 class AddressTestCase(unittest.TestCase):
@@ -64,8 +64,8 @@ class AddressTestCase(unittest.TestCase):
                 'zip': '80214',
                 'city': 'Denver',
                 'state': 'CO'}
-        validator = AddressValidator(data)
-        validator.request()
+        validator = ZipService()
+        validator.validate_address(data)
 
         result = Address.query.get(1)
 
@@ -78,8 +78,8 @@ class AddressTestCase(unittest.TestCase):
                 'zip': '80214',
                 'city': 'Salt Lake City',
                 'state': 'CO'}
-        validator = AddressValidator(data)
-        validator.request()
+        validator = ZipService()
+        validator.validate_address(data)
 
         result = Address.query.get(1)
 
@@ -92,8 +92,8 @@ class AddressTestCase(unittest.TestCase):
                 'zip': '80214',
                 'city': 'Denver',
                 'state': 'Utah'}
-        validator = AddressValidator(data)
-        validator.request()
+        validator = ZipService()
+        validator.validate_address(data)
 
         result = Address.query.get(1)
 
@@ -106,13 +106,22 @@ class AddressTestCase(unittest.TestCase):
                 'zip': '80214',
                 'city': 'Salt Lake City',
                 'state': 'Utah'}
-        validator = AddressValidator(data)
-        validator.request()
+        validator = ZipService()
+        validator.validate_address(data)
 
         result = Address.query.get(1)
 
         self.assertEqual(result.error,
                          'Incorrect City & State: Did you mean Denver, CO?')
+
+    def test_validator_can_lookup(self):
+        zip = '80205'
+        lookup = ZipService()
+        result = lookup.perform_lookup(zip)
+
+        self.assertEqual(result['Zip5'], zip)
+        self.assertEqual(result['City'], 'Denver')
+        self.assertEqual(result['State'], 'CO')
 
 
 if __name__ == '__main__':
