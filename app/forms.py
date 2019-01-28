@@ -16,3 +16,9 @@ class AddressForm(FlaskForm):
                                         message='State should be abbreviated')])
     zip = StringField('Zip', validators=[DataRequired()])
     submit = SubmitField('Submit')
+
+
+class ZipForm(FlaskForm):
+    """ Defines the zip lookup form """
+    zip = StringField('Zip', validators=[DataRequired()])
+    submit = SubmitField('Submit')

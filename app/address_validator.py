@@ -9,10 +9,25 @@ from app import db
 from app.models import Address
 
 
-class AddressValidator:
+class ZipService:
     """ Validates correct City and State using USPS API"""
-    def __init__(self, data):
+
+    def perform_lookup(self, zip):
+        """ Looks up city/state for zip """
+        self.address = {}
+        self.address['zip'] = zip
+        response = self.request()
+        return self.format_response(response)
+
+    def validate_address(self, data):
         self.address = data
+        result = self.request()
+        self.save_address(result)
+
+    def format_response(self, response):
+        response['City'] = response['City'].capitalize()
+        response['State'] = response['State'].upper()
+        return response
 
     def build_request_xml(self):
         """ Build the XML for the API Request """
@@ -36,7 +51,7 @@ class AddressValidator:
         for child in tree_response.iter():
             if child.text:
                 result[child.tag] = child.text.lower()
-        return self.save_address(result)
+        return result
 
     def determine_error(self, result):
         """ Checks if the supplied city/state match the API response """

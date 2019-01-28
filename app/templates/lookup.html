@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+
+
+{% if result != None %}
+<div class='zip-result-div'>
+  <h3 class='sub-heading'>Results</h3>
+  <ul>
+    <li class='result-item'><p class='result-tag'>Zip Code:</p> {{ result['Zip5'] }}</li>
+    <li class='result-item'><p class='result-tag'>City:</p> {{ result['City'] }}</li>
+    <li class='result-item'><p class='result-tag'>state:</p> {{ result['State'] }}</li>
+  </ul>
+</div>
+{% endif %}
+
+
+<form action="" method="post" novalidate class='zip-form'>
+        {{ form.hidden_tag() }}
+        <div class='form-group'>
+          <p class='form-label'>
+            {{ form.zip.label }}<br>
+          </p>
+          <p class='form-input'>
+            {{ form.zip(size=32) }}
+          </p>
+          {% for error in form.zip.errors %}
+          <span style="color: red;">[{{ error }}]</span>
+          {% endfor %}
+        </div>
+        <div class='form-submit'>
+          {{ form.submit() }}</p>
+        </div>
+    </form>
+    {% endblock %}
