@@ -14,7 +14,13 @@ def index():
 def create():
     form = AddressForm()
     if form.validate_on_submit():
-        validator = AddressValidator(form)
+        form_data = {'name': form.name.data,
+                     'address': form.address.data,
+                     'zip': form.zip.data,
+                     'city': form.city.data,
+                     'state': form.state.data,
+                        }
+        validator = AddressValidator(form_data)
         validator.request()
         flash('{} Created Successfully'.format(form.name.data))
         return redirect('/')

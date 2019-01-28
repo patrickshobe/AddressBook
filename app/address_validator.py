@@ -6,16 +6,11 @@ import requests
 import os
 
 class AddressValidator:
-    def __init__(self, form):
-        self.address = {'name': form.name.data,
-                        'address': form.address.data,
-                        'zip': form.zip.data,
-                        'city': form.city.data,
-                        'state': form.state.data,
-                        }
+    def __init__(self, data):
+        self.address = data
 
     def build_request_xml(self):
-        root = Element('CityStateLookupRequest', USERID='900NA0005366')
+        root = Element('CityStateLookupRequest', USERID=os.environ.get('USPS_KEY'))
         zip_sub = SubElement(root, 'ZipCode')
         SubElement(zip_sub, "Zip5").text =  self.address['zip']
         return tostring(root)
