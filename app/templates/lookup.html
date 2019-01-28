@@ -6,12 +6,18 @@
 
 {% if result != None %}
 <div class='zip-result-div'>
+  {% if 'Description' in result %}
+  <h3 class='sub-heading'>INVALID ZIP CODE</h3>
+{% else %}
+
   <h3 class='sub-heading'>Results</h3>
   <ul>
     <li class='result-item'><p class='result-tag'>Zip Code:</p> {{ result['Zip5'] }}</li>
     <li class='result-item'><p class='result-tag'>City:</p> {{ result['City'] }}</li>
     <li class='result-item'><p class='result-tag'>state:</p> {{ result['State'] }}</li>
   </ul>
+
+{% endif %}
 </div>
 {% endif %}
 

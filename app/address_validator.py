@@ -17,6 +17,8 @@ class ZipService:
         self.address = {}
         self.address['zip'] = zip
         response = self.request()
+        if 'Description' in response:
+            return response
         return self.format_response(response)
 
     def validate_address(self, data):
