@@ -5,7 +5,7 @@ and/or look up the correct city and state for a zip code.
 
 ## Screen Shots
 
-### Main Paige
+### Main Page
 ![main page](https://i.imgur.com/dxrcKMm.png)
 
 ### Add Address Page
