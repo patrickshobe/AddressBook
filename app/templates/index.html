@@ -8,7 +8,7 @@
     <th>City</th>
     <th>State</th>
     <th>Zip</th>
-    <th>Error</th>
+    <th></th>
   </tr>
     {% for address in addresses %}
       {% if address.error != None %}
@@ -18,8 +18,8 @@
           <td>{{ address.city }}</td>
           <td>{{ address.state }}</td>
           <td>{{ address.zip }}</td>
-          <td>{{ address.error }}</td>
           <td><a href="{{ url_for('delete', id=address.id)}}">Delete</a></td>
+          <td>{{ address.error }}</td>
         </tr>
       {% else %}
         <tr class='address-row'>
@@ -28,8 +28,8 @@
           <td>{{ address.city }}</td>
           <td>{{ address.state }}</td>
           <td>{{ address.zip }}</td>
-          <td></td>
           <td><a href="{{ url_for('delete', id=address.id)}}">Delete</a></td>
+          <td></td>
         </tr>
      {% endif %}
     {% endfor %}
