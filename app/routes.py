@@ -11,7 +11,7 @@ from app.address_validator import ZipService
 @app.route('/addresses')
 def index():
     """ Address Index """
-    addresses = Address.query.all()
+    addresses = Address.query.order_by('address.name')
     return render_template('index.html', addresses=addresses)
 
 
